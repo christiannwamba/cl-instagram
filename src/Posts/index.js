@@ -2,9 +2,9 @@ import React from 'react';
 import Post from '../Post';
 import './Posts.css';
 
-const Posts = () => (
+const Posts = ({posts}) => (
   <div className="Posts">
-    {([1, 2, 3]).map(v => <Post />)}
+    {posts.map(post => <Post {...post} key={post.id}  />)}
   </div>
 );
 

@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
-app.set('port', process.env.PORT || 8070);
+app.set('port', 8070);
 
 // yet to be created
 // app.use(require('./middleware/db').connectDisconnect);
