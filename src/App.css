@@ -1,0 +1,11 @@
+.App {
+  background: #fafafa;
+  min-height: 100vh;
+  min-width: 100vh;
+  padding-top: 137px;
+}
+
+.App-main {
+  width: 50%;
+  margin: 0 auto;
+}
