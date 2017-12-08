@@ -20,6 +20,7 @@ class Post extends Component {
   componentDidMount() {
     if (this.vDom) {
       this.vPlayer = this.cl.videoPlayer(this.vDom, {
+        autoplayMode:'on-scroll',
         transformation: {
           width: 687,
           height: 687,
@@ -30,7 +31,13 @@ class Post extends Component {
     }
   }
 
-  componentWillReceiveProps;
+  mutePlayer = (e) => {
+    this.vPlayer.mute();
+  }
+
+  unMutePlayer = (e) => {
+    this.vPlayer.unmute();
+  }
 
   isVideo = url => url.split('.')[url.split('.').length - 1] === 'mp4';
 
@@ -52,18 +59,17 @@ class Post extends Component {
           </div>
         </header>
         <div className="Post-image">
-          <div className="Post-image-bg">
+          <div className="Post-image-bg" onMouseEnter={this.mutePlayer} onMouseLeave={this.unMutePlayer}>
             {this.isVideo(image) ? (
               <video
                 controls
-                // autoPlay
                 loop
                 id={this.vId}
                 className="cld-video-player"
                 ref={vDom => (this.vDom = vDom)}
               />
             ) : (
-              <Image publicId={this.fetchPublicId(image)}>
+              <Image publicId={this.fetchPublicId(image)} >
                 <Transformation
                   width="687"
                   height="687"

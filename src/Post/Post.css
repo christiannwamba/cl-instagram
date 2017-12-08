@@ -43,3 +43,9 @@
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
+
+.vjs-fade-out {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
