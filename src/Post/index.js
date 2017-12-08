@@ -70,6 +70,7 @@ class Post extends Component {
                   background="black"
                   crop="pad"
                   flags="progressive:steep"
+                  quality="auto"
                 />
               </Image>
             )}
