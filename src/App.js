@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { CloudinaryContext } from 'cloudinary-react';
 
 import Header from './Header';
 import Posts from './Posts/index';
@@ -24,17 +25,19 @@ class App extends Component {
   componentDidMount() {
     axios
       .get(this.constructFetchUrl)
-      .then(({ data }) => (this.setState({posts: data})))
+      .then(({ data }) => this.setState({ posts: data }))
       .catch(err => console.log(err));
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
-        <section className="App-main">
-          <Posts posts={this.state.posts} />
-        </section>
+        <CloudinaryContext cloudName="christekh">
+          <Header />
+          <section className="App-main">
+            <Posts posts={this.state.posts} />
+          </section>
+        </CloudinaryContext>
       </div>
     );
   }

@@ -1,8 +1,12 @@
 import React from 'react';
 import './Post.css';
+import cloudinary from 'cloudinary-core';
+import { Image, Transformation, Video } from 'cloudinary-react';
+var cl = cloudinary.Cloudinary.new({ cloud_name: 'christekh' });
 
 const isVideo = url => url.split('.')[url.split('.').length - 1] === 'mp4';
-
+const fetchPublicId = url =>
+  url.split('/')[url.split('/').length - 1].split('.')[0];
 const Post = ({ user: { nickname, avatar }, post: { image, caption } }) => (
   <article className="Post">
     <header>
@@ -19,19 +23,26 @@ const Post = ({ user: { nickname, avatar }, post: { image, caption } }) => (
       <div className="Post-image-bg">
         {isVideo(image) ? (
           <video
-            className=""
-            playsInline
-            poster="http://via.placeholder.com/800x800"
-            preload="none"
             controls
-            src={image}
-            type="video/mp4"
+            loop
+            src={cl
+              .url(fetchPublicId(image), {
+                width: 687,
+                height: 687,
+                crop: 'pad',
+                background: 'black'
+              })
+              .replace('image', 'video')}
           />
         ) : (
-          <img
-            src={image}
-            alt=""
-          />
+          <Image publicId={fetchPublicId(image)}>
+            <Transformation
+              width="687"
+              height="687"
+              background="black"
+              crop="pad"
+            />
+          </Image>
         )}
       </div>
     </div>
