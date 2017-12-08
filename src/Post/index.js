@@ -38,10 +38,7 @@ class Post extends Component {
     url.split('/')[url.split('/').length - 1].split('.')[0];
 
   render() {
-    const {
-      user: { nickname, avatar },
-      post: { image, caption }
-    } = this.props;
+    const { user: { nickname, avatar }, post: { image, caption } } = this.props;
     return (
       <article className="Post">
         <header>
@@ -59,7 +56,7 @@ class Post extends Component {
             {this.isVideo(image) ? (
               <video
                 controls
-                autoPlay
+                // autoPlay
                 loop
                 id={this.vId}
                 className="cld-video-player"
@@ -72,6 +69,7 @@ class Post extends Component {
                   height="687"
                   background="black"
                   crop="pad"
+                  flags="progressive:steep"
                 />
               </Image>
             )}
