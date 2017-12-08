@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
-import Post from './Post/index';
+import Posts from './Posts/index';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <section className="App-main">
-          <Post />
+          <Posts />
         </section>
       </div>
     );
