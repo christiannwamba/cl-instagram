@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { CloudinaryContext } from 'cloudinary-react';
+import { Events, scrollSpy } from 'react-scroll';
 
 import Header from './Header';
 import Posts from './Posts/index';
@@ -27,6 +28,14 @@ class App extends Component {
       .get(this.constructFetchUrl)
       .then(({ data }) => this.setState({ posts: data }))
       .catch(err => console.log(err));
+    Events.scrollEvent.register('end', function(to, element) {
+      console.log('end', arguments);
+    });
+    scrollSpy.update()
+  }
+
+  componentWillUnmount() {
+    Events.scrollEvent.remove('end');
   }
 
   render() {

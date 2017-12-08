@@ -32,11 +32,11 @@ class Post extends Component {
   }
 
   mutePlayer = (e) => {
-    this.vPlayer.mute();
+    this.vDom && this.vPlayer.mute();
   }
 
   unMutePlayer = (e) => {
-    this.vPlayer.unmute();
+    this.vDom && this.vPlayer.unmute();
   }
 
   isVideo = url => url.split('.')[url.split('.').length - 1] === 'mp4';

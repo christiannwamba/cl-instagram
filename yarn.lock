@@ -2814,14 +2814,14 @@ global-prefix@^1.0.1:
     is-windows "^1.0.1"
     which "^1.2.14"
 
-global@4.3.0:
+global@4.3.0, global@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/global/-/global-4.3.0.tgz#ef7ec4beead579b454f5ebd5e7f303db54f42a2b"
   dependencies:
     min-document "^2.6.1"
     process "~0.5.1"
 
-global@^4.3.0, global@^4.3.1, global@^4.3.2, global@~4.3.0:
+global@^4.3.1, global@^4.3.2, global@~4.3.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/global/-/global-4.3.2.tgz#e76989268a6c74c38908b1305b10fc0e394e9d0f"
   dependencies:
@@ -5272,6 +5272,12 @@ react-scripts@1.0.17:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.1.2"
+
+react-scroll@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.3.tgz#174dc716eacb8b14bbf82019d4f900dc2ef8c1e2"
+  dependencies:
+    prop-types "^15.5.8"
 
 react@^16.2.0:
   version "16.2.0"
