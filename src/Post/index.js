@@ -28,6 +28,7 @@ class Post extends Component {
       });
       this.vPlayer.source(this.fetchPublicId(this.props.post.image));
       this.vPlayer.fluid(true);
+      this.vPlayer.mute();
     }
   }
 
@@ -57,8 +58,8 @@ class Post extends Component {
         <div className="Post-image">
           <div
             className="Post-image-bg"
-            onMouseEnter={this.mutePlayer}
-            onMouseLeave={this.unMutePlayer}
+            onMouseEnter={this.unMutePlayer}
+            onMouseLeave={this.mutePlayer}
           >
             {this.isVideo(image) ? (
               <video
