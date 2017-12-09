@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import cloudinary from 'cloudinary-core';
 import 'cloudinary-video-player';
-import { Image, Transformation } from 'cloudinary-react';
 
 import './Post.css';
 import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
@@ -28,6 +27,7 @@ class Post extends Component {
         }
       });
       this.vPlayer.source(this.fetchPublicId(this.props.post.image));
+      this.vPlayer.fluid(true);
     }
   }
 
@@ -69,7 +69,7 @@ class Post extends Component {
                 ref={vDom => (this.vDom = vDom)}
               />
             ) : (
-              <img src={this.cl.url(this.fetchPublicId(image), {
+              <img alt={caption} src={this.cl.url(this.fetchPublicId(image), {
                 width: 687,
                 height: 687,
                 crop: 'pad',
