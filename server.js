@@ -39,17 +39,15 @@ app.post('/posts', (req, res) => {
 
 app.get('/posts', (req, res) => {
   // console.log(req.query.offset, req.query.limit);
-  console.log(parseInt(req.query.offset) - 1, parseInt(req.query.limit))
+  console.log(parseInt(req.query.offset) - 1, parseInt(req.query.limit));
   const posts = db
     .get('posts')
+    .orderBy(['created_at'], ['desc'])
     .slice(parseInt(req.query.offset) - 1)
     .take(parseInt(req.query.limit))
     .value();
-    const count = db
-    .get('posts')
-    .value()
-    .length;
-  res.json({posts: posts,  count: count });
+  const count = db.get('posts').value().length;
+  res.json({ posts: posts, count: count });
 });
 
 app.listen(app.get('port'), _ => console.log('App at ' + app.get('port')));
