@@ -85,12 +85,6 @@ class App extends Component {
           <Header />
           <section className="App-main">
             <Posts
-              loadPosts={this.loadPosts.bind(
-                this,
-                this.state.offset,
-                this.state.limit
-              )}
-              hasMorePosts={this.state.hasMorePosts}
               posts={this.state.posts}
             />
           </section>

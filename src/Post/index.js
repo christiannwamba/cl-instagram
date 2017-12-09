@@ -65,7 +65,7 @@ class Post extends Component {
                 controls
                 loop
                 id={this.vId}
-                className="cld-video-player"
+                className="cld-video-player vjs-controls-disabled"
                 ref={vDom => (this.vDom = vDom)}
               />
             ) : (
