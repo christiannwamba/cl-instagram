@@ -39,12 +39,17 @@ app.post('/posts', (req, res) => {
 
 app.get('/posts', (req, res) => {
   // console.log(req.query.offset, req.query.limit);
+  console.log(parseInt(req.query.offset) - 1, parseInt(req.query.limit))
   const posts = db
     .get('posts')
-    .slice(req.query.offset - 1)
-    .take(req.query.limit)
+    .slice(parseInt(req.query.offset) - 1)
+    .take(parseInt(req.query.limit))
     .value();
-  res.json(posts);
+    const count = db
+    .get('posts')
+    .value()
+    .length;
+  res.json({posts: posts,  count: count });
 });
 
 app.listen(app.get('port'), _ => console.log('App at ' + app.get('port')));

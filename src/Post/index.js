@@ -20,7 +20,7 @@ class Post extends Component {
   componentDidMount() {
     if (this.vDom) {
       this.vPlayer = this.cl.videoPlayer(this.vDom, {
-        autoplayMode:'on-scroll',
+        autoplayMode: 'on-scroll',
         transformation: {
           width: 687,
           height: 687,
@@ -31,13 +31,9 @@ class Post extends Component {
     }
   }
 
-  mutePlayer = (e) => {
-    this.vDom && this.vPlayer.mute();
-  }
+  mutePlayer = e => this.vDom && this.vPlayer.mute();
 
-  unMutePlayer = (e) => {
-    this.vDom && this.vPlayer.unmute();
-  }
+  unMutePlayer = e => this.vDom && this.vPlayer.unmute();
 
   isVideo = url => url.split('.')[url.split('.').length - 1] === 'mp4';
 
@@ -47,7 +43,7 @@ class Post extends Component {
   render() {
     const { user: { nickname, avatar }, post: { image, caption } } = this.props;
     return (
-      <article className="Post">
+      <article className="Post" ref="Post">
         <header>
           <div className="Post-user">
             <div className="Post-user-avatar">
@@ -59,7 +55,11 @@ class Post extends Component {
           </div>
         </header>
         <div className="Post-image">
-          <div className="Post-image-bg" onMouseEnter={this.mutePlayer} onMouseLeave={this.unMutePlayer}>
+          <div
+            className="Post-image-bg"
+            onMouseEnter={this.mutePlayer}
+            onMouseLeave={this.unMutePlayer}
+          >
             {this.isVideo(image) ? (
               <video
                 controls
@@ -69,16 +69,13 @@ class Post extends Component {
                 ref={vDom => (this.vDom = vDom)}
               />
             ) : (
-              <Image publicId={this.fetchPublicId(image)} >
-                <Transformation
-                  width="687"
-                  height="687"
-                  background="black"
-                  crop="pad"
-                  flags="progressive:steep"
-                  quality="auto"
-                />
-              </Image>
+              <img src={this.cl.url(this.fetchPublicId(image), {
+                width: 687,
+                height: 687,
+                crop: 'pad',
+                flags: 'progressive:steep',
+                quality: 'auto'
+              })} />
             )}
           </div>
         </div>
